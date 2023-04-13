@@ -8500,6 +8500,15 @@
     githubId = 147689;
     name = "Hans-Christian Esperer";
   };
+  hcsch = {
+    email = "nixpkgs@hcsch.eu";
+    github = "hcsch";
+    githubId = 34245439;
+    name = "Hans Christian Schmitz";
+    keys = [{
+      fingerprint = "53AC B429 A3DD DE37 1756  CD02 1D72 9DE4 757D E669";
+    }];
+  };
   hdhog = {
     name = "Serg Larchenko";
     email = "hdhog@hdhog.ru";
