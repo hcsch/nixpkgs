@@ -1763,6 +1763,23 @@ let
         };
       };
 
+      ms-vscode.live-server = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "live-server";
+          publisher = "ms-vscode";
+          version = "0.5.2023041301";
+          sha256 = "sha256-FPRG58XjZ2Xk8eBbXuUy8T3jD1FSQSj7xkz3y8zmpaY=";
+        };
+        meta = {
+          changelog = "https://marketplace.visualstudio.com/items/ms-vscode.live-server/changelog";
+          description = "Hosts a local server in your workspace for you to preview your webpages on";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server";
+          homepage = "https://github.com/microsoft/vscode-livepreview";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       llvm-org.lldb-vscode = llvmPackages_8.lldb;
 
       llvm-vs-code-extensions.vscode-clangd = buildVscodeMarketplaceExtension {
