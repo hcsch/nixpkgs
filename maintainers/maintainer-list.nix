@@ -11425,6 +11425,12 @@
     githubId = 10136407;
     name = "Harsh Chokshi";
   };
+  hcsch = {
+    email = "nixpkgs@hcsch.eu";
+    github = "hcsch";
+    githubId = 34245439;
+    name = "Hans Christian Schmitz";
+  };
   hdhog = {
     name = "Serg Larchenko";
     email = "hdhog@hdhog.ru";
