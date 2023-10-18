@@ -6890,6 +6890,12 @@
     githubId = 147689;
     name = "Hans-Christian Esperer";
   };
+  hcsch = {
+    name = "Hans Christian Schmitz";
+    github = "hcsch";
+    githubId = 34245439;
+    email = "nixpkgs@hcsch.eu";
+  };
   hdhog = {
     name = "Serg Larchenko";
     email = "hdhog@hdhog.ru";
