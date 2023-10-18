@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+index e8d9905..1caba71 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,7 +26,6 @@ SHARE_DIR = $(DESTDIR)$(PREFIX)/share
+ .PHONY: install
+ 
+ install:
+-	@./find_snapper_config || sed -i 's@^SNAPPER_CONFIG.*@SNAPPER_CONFIG='$(SNAPPER_CONFIG)'@g' bin/$(PKGNAME)
+ 	@install -Dm644 LICENSE -t $(SHARE_DIR)/licenses/$(PKGNAME)/
+ 	@install -Dm644 README.md -t $(SHARE_DIR)/doc/$(PKGNAME)/
+ 	@install -Dm644 man8/* -t $(SHARE_DIR)/man/man8/
+diff --git a/bin/snap-sync b/bin/snap-sync
+index 91a5457..e4813cc 100755
+--- a/bin/snap-sync
++++ b/bin/snap-sync
+@@ -34,7 +34,7 @@ printf "snap-sync comes with ABSOLUTELY NO WARRANTY. This is free software, and
+ 
+ # The following line is modified by the Makefile or
+ # find_snapper_config script
+-SNAPPER_CONFIG=/etc/conf.d/snapper
++SNAPPER_CONFIG=/etc/sysconfig/snapper
+ 
+ TMPDIR=$(mktemp -d)
+ PIPE=$TMPDIR/$name.out
