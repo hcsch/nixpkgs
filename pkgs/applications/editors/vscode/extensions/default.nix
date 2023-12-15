@@ -3096,6 +3096,23 @@ let
         };
       };
 
+      mcu-debug.memory-view = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "memory-view";
+          publisher = "mcu-debug";
+          version = "0.0.29";
+          sha256 = "sha256-YZP02EeDe05LQn4gZWSCXndxV70Jfweu+jDu62ElGhI=";
+        };
+        meta = {
+          description = "Provides memory views for debuggers";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=mcu-debug.memory-view";
+          homepage = "https://github.com/mcu-debug/memview";
+          changelog = "https://marketplace.visualstudio.com/items/mcu-debug.memory-view/changelog";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       mechatroner.rainbow-csv = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "rainbow-csv";
