@@ -2964,6 +2964,23 @@ let
         };
       };
 
+      marus25.cortex-debug = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "cortex-debug";
+          publisher = "marus25";
+          version = "1.12.1";
+          sha256 = "sha256-ioK6gwtkaAcfxn11lqpwhrpILSfft/byeEqoEtJIfM0=";
+        };
+        meta = {
+          description = "ARM Cortex-M GDB Debugger support for VSCode";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=marus25.cotext-debug";
+          homepage = "https://github.com/Marus/cortex-debug";
+          changelog = "https://marketplace.visualstudio.com/items/marus25.cortex-debug/changelog";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       matangover.mypy = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "mypy";
