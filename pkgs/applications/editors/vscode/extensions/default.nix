@@ -3091,6 +3091,23 @@ let
         };
       };
 
+      mcu-debug.rtos-views = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "rtos-views";
+          publisher = "mcu-debug";
+          version = "0.0.7";
+          sha256 = "sha256-VvMAYU7KiFxwLopUrOjvhBmA3ZKz4Zu8mywXZXCEHdo=";
+        };
+        meta = {
+          description = "RTOS views for microcontrollers";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=mcu-debug.rtos-views";
+          homepage = "https://github.com/mcu-debug/rtos-views";
+          changelog = "https://marketplace.visualstudio.com/items/mcu-debug.rtos-views/changelog";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       mechatroner.rainbow-csv = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "rainbow-csv";
