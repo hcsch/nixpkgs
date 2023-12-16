@@ -3108,6 +3108,23 @@ let
         };
       };
 
+      mcu-debug.peripheral-viewer = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "peripheral-viewer";
+          publisher = "mcu-debug";
+          version = "1.4.6";
+          sha256 = "sha256-flWBK+ugrbgy5pEDmGQeUzk1s2sCMQJRgrS3Ku1Oiag=";
+        };
+        meta = {
+          description = "Standalone Peripheral(SVD) Viewer extension extracted from cortex-debug, now works with any debugger";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=mcu-debug.peripheral-viewer";
+          homepage = "https://github.com/mcu-debug/peripheral-viewer";
+          changelog = "https://marketplace.visualstudio.com/items/mcu-debug.peripheral-viewer/changelog";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       mechatroner.rainbow-csv = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "rainbow-csv";
