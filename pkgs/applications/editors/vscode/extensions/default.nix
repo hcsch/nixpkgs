@@ -366,6 +366,23 @@ let
         };
       };
 
+      arthurwang.vsc-prolog = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vsc-prolog";
+          publisher = "arthurwang";
+          version = "0.8.23";
+          sha256 = "sha256-Da2dCpruVqzP3g1hH0+TyvvEa1wEwGXgvcmIq9B/2cQ=";
+        };
+        meta = {
+          description = "Provides language support for Prolog (mainly for SWI-Prolog and some features for ECLiPSe).";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=arthurwang.vsc-prolog";
+          homepage = "https://github.com/arthwang/vsc-prolog";
+          changelog = "https://marketplace.visualstudio.com/items/arthurwang.vsc-prolog/changelog";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       asciidoctor.asciidoctor-vscode = callPackage ./asciidoctor.asciidoctor-vscode { };
 
       asdine.cue = buildVscodeMarketplaceExtension {
