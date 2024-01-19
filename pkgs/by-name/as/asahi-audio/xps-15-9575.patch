@@ -1,0 +1,175 @@
+diff --git a/Makefile b/Makefile
+index c157e2b..7e8ca3a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@ DATA_DIR ?= $(PREFIX)/share/
+ 
+ all: aliases
+ 
+-aliases: aliases-j274 aliases-j293 aliases-j314 aliases-j316 aliases-j375
++aliases: aliases-j274 aliases-j293 aliases-j314 aliases-j316 aliases-j375 aliases-j-xps-15-9575
+ 
+ aliases-j274:
+ 	make -f $$PWD/Makefile -C firs/j274 graph-j473.json graph-j474.json
+@@ -23,6 +23,9 @@ aliases-j314:
+ aliases-j316:
+ 	make -f $$PWD/Makefile -C firs/j316 graph-j416.json
+ 
++aliases-j-xps-15-9575:
++	make -f $$PWD/Makefile -C firs/j-xps-15-9575 graph-j-xps-15-9575.json
++
+ graph-%.json: graph.json
+ 	sed -E "s/([^/][jJ])$$(basename "$$PWD" | tr -d j)/\1$(patsubst graph-j%.json,%,$@)/g" $< >$@
+ 
+@@ -45,7 +48,7 @@ j%: core
+ 	install -pm0644 -t $(DESTDIR)/$(DATA_DIR)/asahi-audio/$@/ $(wildcard firs/$@/*)
+ 
+ 
+-install: aliases core j274 j293 j313 j314 j316 j413 j415 j375
++install: aliases core j274 j293 j313 j314 j316 j413 j415 j375 j-xps-15-9575
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)/$(DATA_DIR)/asahi-audio/
+diff --git a/conf/wireplumber.conf b/conf/wireplumber.conf
+index 8906a8b..77abad6 100644
+--- a/conf/wireplumber.conf
++++ b/conf/wireplumber.conf
+@@ -26,7 +26,138 @@ monitor.alsa.rules = [
+     }
+ ]
+ 
++monitor.alsa.rules = [
++    {
++        matches = [
++            {
++                # XPS-15 9575 integrated sound card
++                node.name = "alsa_output.pci-0000_00_1f.3.analog-stereo"
++                node.nick = "ALC3271 Analog"
++            }
++        ]
++        actions = {
++            update-props = {
++                audio.allowed-rates = [48000]
++            }
++        }
++    }
++]
++
+ node.software-dsp.rules = [
++    # XPS-15 9575 integrated sound card
++    {
++        matches = [
++            {
++                node.name = "alsa_output.pci-0000_00_1f.3.analog-stereo"
++                node.nick = "ALC3271 Analog"
++            }
++        ]
++        actions = {
++            create-filter = {
++                filter-graph = {
++                    node.description = "XPS 15 9575 Speakers"
++                    media.name = "XPS 15 9575 Speakers"
++                    filter.graph = {
++                        nodes = [
++                            {
++                                type = "lv2"
++                                plugin = "https://chadmed.au/bankstown"
++                                name = "bassex"
++                                control = {
++                                    bypass = 0
++                                    amt = 1.65
++                                    sat_second = 1.3
++                                    sat_third = 2.85
++                                    blend = 0.65
++                                    ceil = 200.0
++                                    floor = 20.0
++                                }
++                            }
++                            {
++                                type = "lv2"
++                                plugin = "http://lsp-plug.in/plugins/lv2/loud_comp_mono"
++                                name = "ell"
++                                control = {
++                                    enabled = 1
++                                    input = 1.0
++                                    fft = 4
++                                }
++                            }
++                            {
++                                type = "lv2"
++                                plugin = "http://lsp-plug.in/plugins/lv2/loud_comp_mono"
++                                name = "elr"
++                                control = {
++                                    enabled = 1
++                                    input = 1.0
++                                    fft = 4
++                                }
++                            }
++                        ]
++                        links = [
++                            {
++                                output = "bassex:out_l"
++                                input = "ell:in"
++                            }
++                            {
++                                output = "bassex:out_r"
++                                input = "elr:in"
++                            }
++                        ]
++                        inputs = [
++                            "bassex:in_l"
++                            "bassex:in_r"
++                        ]
++                        outputs = [
++                            "ell:out"
++                            "elr:out"
++                        ]
++                        capture.volumes = [
++                            {
++                                control = "ell:volume"
++                                min = -47.5
++                                max = 0.0
++                                scale = "cubic"
++                            }
++                            {
++                                control = "elr:volume"
++                                min = -47.5
++                                max = 0.0
++                                scale = "cubic"
++                            }
++                        ]
++                    }
++                    capture.props = {
++                        node.name = "audio_effect.xps-15-9575-convolver"
++                        media.class = "Audio/Sink"
++                        audio.channels = "2"
++                        audio.position = [
++                            "FL"
++                            "FR"
++                        ]
++                        device.api = "dsp"
++                        audio.rate = 48000
++                        node.virtual = "false"
++                        priority.session = 850
++                        state.default-channel-volume = 0.343
++                    }
++                    playback.props = {
++                        node.name = "effect_output.xps-15-9575-convolver"
++                        target.object = "alsa_output.pci-0000_00_1f.3.analog-stereo"
++                        node.passive = "true"
++                        audio.channels = "2"
++                        audio.rate = 48000
++                        audio.position = [
++                            "FL"
++                            "FR"
++                        ]
++                    }
++                }
++                hide-parent = false
++            }
++        }
++    }
++
+     # J293 (MacBook Pro 13", M1, 2020)
+     {
+         matches = [

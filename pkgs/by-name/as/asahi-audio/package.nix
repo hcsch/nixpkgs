@@ -7,6 +7,7 @@
   triforce-lv2,
   nix-update-script,
 }:
+
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "asahi-audio";
   version = "4.1";
@@ -22,6 +23,15 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     "DESTDIR=$(out)"
     "DATA_DIR=share"
   ];
+
+  patches = [
+    ./xps-15-9575.patch
+  ];
+
+  postPatch = ''
+    mkdir -p firs/j-xps-15-9575
+    cp ${./j-xps-15-9575}/* firs/j-xps-15-9575/
+  '';
 
   fixupPhase = ''
     runHook preFixup
@@ -73,6 +83,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     changelog = "https://github.com/AsahiLinux/asahi-audio/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.mit;
     maintainers = [ ];
-    platforms = [ "aarch64-linux" ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
   };
 })
