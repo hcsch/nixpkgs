@@ -1,0 +1,132 @@
+{
+    "node.description": "XPS 15 9575 Speakers",
+    "media.name": "XPS 15 9575 Speakers",
+    "filter.graph": {
+        "nodes": [
+            {
+                "type": "lv2",
+                "plugin": "https://chadmed.au/bankstown",
+                "name": "bassex",
+                "control": {
+                    "bypass": 0,
+                    "amt": 1.25,
+                    "sat_second": 1.65,
+                    "sat_third": 2.35,
+                    "blend": 0.40,
+                    "ceil": 200.0,
+                    "floor": 20.0,
+                    "final_hp": 120.0
+                }
+            },
+            {
+                "type": "lv2",
+                "plugin": "http://lsp-plug.in/plugins/lv2/loud_comp_mono",
+                "name": "ell",
+                "control": {
+                    "enabled": 1,
+                    "input": 1.0,
+                    "fft": 4
+                }
+            },
+            {
+                "type": "lv2",
+                "plugin": "http://lsp-plug.in/plugins/lv2/loud_comp_mono",
+                "name": "elr",
+                "control": {
+                    "enabled": 1,
+                    "input": 1.0,
+                    "fft": 4
+                }
+            },
+            {
+                "type": "builtin",
+                "label": "convolver",
+                "name": "convL",
+                "config": {
+                    "filename": [
+                        "/usr/share/asahi-audio/j-xps-15-9575/l-48.wav"
+                    ],
+                    "channel": 0,
+                    "gain": 1.0
+                }
+            },
+            {
+                "type": "builtin",
+                "label": "convolver",
+                "name": "convR",
+                "config": {
+                    "filename": [
+                        "/usr/share/asahi-audio/j-xps-15-9575/r-48.wav"
+                    ],
+                    "channel": 0,
+                    "gain": 1.0
+                }
+            }
+        ],
+        "links": [
+            {
+                "output": "bassex:out_l",
+                "input": "ell:in"
+            },
+            {
+                "output": "bassex:out_r",
+                "input": "elr:in"
+            },
+            {
+                "output": "ell:out",
+                "input": "convL:In"
+            },
+            {
+                "output": "elr:out",
+                "input": "convR:In"
+            }
+        ],
+        "inputs": [
+            "bassex:in_l",
+            "bassex:in_r"
+        ],
+        "outputs": [
+            "convL:Out",
+            "convR:Out"
+        ],
+        "capture.volumes": [
+            {
+                "control": "ell:volume",
+                "min": -42.5,
+                "max": 0.0,
+                "scale": "cubic"
+            },
+            {
+                "control": "elr:volume",
+                "min": -42.5,
+                "max": 0.0,
+                "scale": "cubic"
+            }
+        ]
+    },
+    "capture.props": {
+        "node.name": "audio_effect.xps-15-9575-convolver",
+        "media.class": "Audio/Sink",
+        "audio.channels": "2",
+        "audio.position": [
+            "FL",
+            "FR"
+        ],
+        "device.api": "dsp",
+        "audio.rate": 48000,
+        "node.virtual": "false",
+        "priority.session": 850,
+        "state.default-channel-volume": 0.343
+    },
+    "playback.props": {
+        "node.name": "effect_output.xps-15-9575-convolver",
+        "target.object": "alsa_output.pci-0000_00_1f.3.analog-stereo",
+        "node.passive": "true",
+        "audio.channels": "2",
+        "audio.rate": 48000,
+        "audio.position": [
+            "FL",
+            "FR"
+        ]
+    }
+}

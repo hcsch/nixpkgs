@@ -1,0 +1,146 @@
+diff --git a/conf/wireplumber.conf b/conf/wireplumber.conf
+index 2fe3082..8906a8b 100644
+--- a/conf/wireplumber.conf
++++ b/conf/wireplumber.conf
+@@ -26,14 +26,14 @@ monitor.alsa.rules = [
+     }
+ ]
+ 
+-node.dsp.rules = [
++node.software-dsp.rules = [
+     # J293 (MacBook Pro 13", M1, 2020)
+     {
+         matches = [
+             { api.alsa.path = "hw:AppleJ293,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j293/graph.json"
+                 hide-parent = true
+             }
+@@ -46,7 +46,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ493,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j293/graph-j493.json"
+                 hide-parent = true
+             }
+@@ -59,7 +59,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ313,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j313/graph.json"
+                 hide-parent = true
+             }
+@@ -72,7 +72,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ413,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j413/graph.json"
+                 hide-parent = true
+             }
+@@ -85,7 +85,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ415,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j415/graph.json"
+                 hide-parent = true
+             }
+@@ -98,7 +98,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ314,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j314/graph.json"
+                 hide-parent = true
+             }
+@@ -111,7 +111,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ414,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j314/graph-j414.json"
+                 hide-parent = true
+             }
+@@ -124,7 +124,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ316,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j316/graph.json"
+                 hide-parent = true
+             }
+@@ -137,7 +137,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ416,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j416/graph-j416.json"
+                 hide-parent = true
+             }
+@@ -150,7 +150,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ274,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j274/graph.json"
+                 hide-parent = true
+             }
+@@ -163,7 +163,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ473,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j274/graph-j473.json"
+                 hide-parent = true
+             }
+@@ -176,7 +176,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ474,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j274/graph-j474.json"
+                 hide-parent = true
+             }
+@@ -189,7 +189,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ375,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j375/graph.json"
+                 hide-parent = true
+             }
+@@ -202,7 +202,7 @@ node.dsp.rules = [
+             { api.alsa.path = "hw:AppleJ475,1" }
+         ]
+         actions = {
+-            update-props = {
++            create-filter = {
+                 filter-graph = "/usr/share/asahi-audio/j375/graph-j475.json"
+                 hide-parent = true
+             }
+@@ -220,6 +220,6 @@ wireplumber.components = [
+ wireplumber.profiles = {
+     main = {
+         custom.asahi = required
+-        node.dsp = required
++        node.software-dsp = required
+     }
+ }
