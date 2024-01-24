@@ -49,7 +49,7 @@ index 8906a8b..77abad6 100644
 +        ]
 +        actions = {
 +            update-props = {
-+                audio.allowed-rates = [48000]
++                audio.allowed-rates = [44100, 48000, 96000, 192000]
 +            }
 +        }
 +    }
