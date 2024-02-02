@@ -1040,6 +1040,8 @@ let
         };
       };
 
+      wgsl-analyzer.wgsl-analyzer = callPackage ./wgsl-analyzer.wgsl-analyzer { };
+
       colejcummins.llvm-syntax-highlighting = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "llvm-syntax-highlighting";
