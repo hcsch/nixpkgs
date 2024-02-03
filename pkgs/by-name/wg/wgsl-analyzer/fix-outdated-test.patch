@@ -1,0 +1,13 @@
+diff --git a/crates/wgsl_parser/src/tests.rs b/crates/wgsl_parser/src/tests.rs
+index a80924d..234e9f4 100644
+--- a/crates/wgsl_parser/src/tests.rs
++++ b/crates/wgsl_parser/src/tests.rs
+@@ -2120,7 +2120,7 @@ fn test()
+                   Whitespace@28..29 "\n"
+ 
+             error at 26..27: expected Arrow or BraceLeft, but found BraceRight
+-            error at 27..28: expected Fn, Struct, Var, Let, Const or Alias, but found Semicolon"#]],
++            error at 27..28: expected Fn, Struct, Var, Let, Const, Alias or Override, but found Semicolon"#]],
+     );
+ }
+ 
