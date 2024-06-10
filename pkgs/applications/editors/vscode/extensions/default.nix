@@ -1647,6 +1647,8 @@ let
         };
       };
 
+      efoerster.texlab = callPackage ./efoerster.texlab { };
+
       eg2.vscode-npm-script = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "vscode-npm-script";
