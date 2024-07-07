@@ -2262,6 +2262,22 @@ let
         };
       };
 
+      hangxingliu.vscode-systemd-support = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vscode-systemd-support";
+          publisher = "hangxingliu";
+          version = "2.2.0";
+          hash = "sha256-08pypB6PZk9diwVmHkwuW6SMlpTbw159seuaWALfMlE=";
+        };
+        meta = {
+          description = "Visual Studio Code extension that helps in reading and writing of systemd unit files";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=hangxingliu.vscode-systemd-support";
+          homepage = "https://github.com/hangxingliu/vscode-systemd";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       hars.cppsnippets = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "cppsnippets";
