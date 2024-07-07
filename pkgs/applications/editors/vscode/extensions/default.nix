@@ -2197,6 +2197,22 @@ let
 
       gruntfuggly.todo-tree = callPackage ./gruntfuggly.todo-tree { };
 
+      hangxingliu.vscode-systemd-support = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "vscode-systemd-support";
+          publisher = "hangxingliu";
+          version = "3.0.0";
+          hash = "sha256-K1fXE0AxkWdHsQC3uUFcJecJqB5PpJVzVdtfPSw4+eg=";
+        };
+        meta = {
+          description = "Visual Studio Code extension that helps in reading and writing of systemd unit files";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=hangxingliu.vscode-systemd-support";
+          homepage = "https://github.com/hangxingliu/vscode-systemd";
+          license = lib.licenses.mit;
+          maintainers = [ lib.maintainers.hcsch ];
+        };
+      };
+
       hars.cppsnippets = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "cppsnippets";
