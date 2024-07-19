@@ -165,7 +165,7 @@ index 8906a8b..77abad6 100644
 +                        ]
 +                    }
 +                }
-+                hide-parent = false
++                hide-parent = true
 +            }
 +        }
 +    }
