@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index a68c66c..003e2f7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -30,8 +30,6 @@ ATLAS_OWN_SUID_OPTS =
+ endif
+ 
+ install-exec-local:
+-	$(mkinstalldirs) -m 2775 $(ATLAS_OWN_MAIN_OPTS) $(ATLAS_SPOOL_DIRS)
+-	$(mkinstalldirs) -m 0770 $(ATLAS_OWN_MAIN_OPTS) $(ATLAS_CONF_DIRS)
+ if !SYSTEMD_INSTALL
+ 	$(mkinstalldirs) -m 0775 $(ATLAS_OWN_MEAS_OPTS) $(ATLAS_RUN_DIRS)
+ endif
