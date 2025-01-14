@@ -16,7 +16,7 @@
   "armv6l-linux"
   "armv7l-linux"
   "i686-linux"
-  # "mipsel-linux" is excluded because it is not bootstrapped
+  "mipsel-linux"
 
   # Other platforms with sufficient support in stdenv which is not formally
   # mandated by their platform tier.

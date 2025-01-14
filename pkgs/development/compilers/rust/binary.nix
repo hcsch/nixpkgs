@@ -101,6 +101,7 @@ rec {
         "x86_64-openbsd"
         "i686-windows"
         "x86_64-windows"
+        "mipsel-linux" # HACK!
       ];
       targetPlatforms = tier1TargetPlatforms ++ [
         # Platforms without host tools from
@@ -111,7 +112,7 @@ rec {
         "m68k-linux"
         "mips-linux"
         "mips64-linux"
-        "mipsel-linux"
+        # "mipsel-linux"
         "mips64el-linux"
         "riscv32-linux"
         "armv6l-netbsd"

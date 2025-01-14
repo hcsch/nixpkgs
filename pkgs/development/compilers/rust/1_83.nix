@@ -123,6 +123,7 @@ import ./default.nix
       riscv64gc-unknown-linux-gnu = "f4cb563530ad12daba059373a354cf0dcb53a88e5a5d24928778d2736a0e8c65";
       s390x-unknown-linux-gnu = "502010d6f40b1385c4b99cf74ff0436102efd155ec1e49bca4c02e8c68a4b142";
       x86_64-unknown-freebsd = "3b55ed8afe27032128622b14e4f4b59d66b3cc7ff64e6df7a06d5e224b3de2a1";
+      mipsel-unknown-linux-gnu = "5bf10b81ef6df4ec4f74111826c880977a70be051b6c2a27a44c87ab1e8c8497";
     };
 
     selectRustPackage = pkgs: pkgs.rust_1_83;
