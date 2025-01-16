@@ -28,6 +28,7 @@
   lib,
   buildPackages,
   fetchurl,
+  patchutils,
   linuxHeaders ? null,
   gd ? null,
   libpng ? null,
@@ -128,7 +129,10 @@ stdenv.mkDerivation (
       )
       ++ lib.optional stdenv.hostPlatform.isMusl ./fix-rpc-types-musl-conflicts.patch
       ++ lib.optional stdenv.buildPlatform.isDarwin ./darwin-cross-build.patch
-      ++ lib.optional enableCETRuntimeDefault ./2.39-revert-cet-default-disable.patch;
+      ++ lib.optional enableCETRuntimeDefault ./2.39-revert-cet-default-disable.patch
+      # See https://inbox.sourceware.org/libc-alpha/6180a8251d3f8d714ff13d27ccce48e44845661b.1733802592.git.sam@gentoo.org/
+      # To be included in 2.41
+      ++ lib.optional stdenv.hostPlatform.isLittleEndian ./fix-incorrect-alignment-assumption.patch;
 
     postPatch =
       ''
