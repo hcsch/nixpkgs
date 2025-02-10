@@ -19,8 +19,15 @@ stdenv.mkDerivation {
   # Some gnulib tests fail
   # - on Musl: https://github.com/NixOS/nixpkgs/pull/228714
   # - on x86_64-darwin: https://github.com/NixOS/nixpkgs/pull/228714#issuecomment-1576826330
+  # - running in QEMU (mips):
   postPatch = if stdenv.hostPlatform.isMusl || (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) then ''
     sed -i 's:gnulib-tests::g' Makefile.in
+  '' else if stdenv.hostPlatform.isMips then ''
+    printf "#!/bin/sh\nexit 77\n" > tests/stack-overflow
+    printf "#!/bin/sh\nexit 77\n" > gnulib-tests/test-c-stack.sh
+    for f in gnulib-tests/{test-sigsegv-catch-stackoverflow1.c,test-sigsegv-catch-stackoverflow2.c}; do
+      echo "int main() { return 77; }" > "$f"
+    done
   '' else null;
 
   nativeCheckInputs = [ perl glibcLocales ];
