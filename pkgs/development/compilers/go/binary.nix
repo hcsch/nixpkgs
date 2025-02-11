@@ -14,10 +14,18 @@ let
       "i686" = "386";
       "x86_64" = "amd64";
       "aarch64" = "arm64";
+      "arm" = "arm";
       "armv6l" = "armv6l";
       "armv7l" = "armv6l";
+      "powerpc64" = "ppc64";
       "powerpc64le" = "ppc64le";
       "riscv64" = "riscv64";
+      "mips" = "mips";
+      "mipsel" = "mipsle";
+      "mips64" = "mips64";
+      "mips64el" = "mips64le";
+      "loongarch64" = "loong64";
+      "s390x" = "s390x";
     }
     .${platform.parsed.cpu.name} or (throw "Unsupported CPU ${platform.parsed.cpu.name}");
 
