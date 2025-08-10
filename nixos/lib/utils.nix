@@ -63,6 +63,8 @@ let
       "/var/lib/nixos"
       "/etc"
       "/usr"
+      # required for user home directory creation by update-users-groups.pl in activations scripts in initrd
+      "/home"
     ];
     fsNeededForBoot = fs: fs.neededForBoot || elem fs.mountPoint pathsNeededForBoot;
 
