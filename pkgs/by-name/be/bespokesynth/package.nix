@@ -11,6 +11,7 @@
   alsa-lib,
   alsa-tools,
   freetype,
+  juce,
   jsoncpp,
   libusb1,
   libx11,
@@ -43,10 +44,10 @@ stdenv.mkDerivation (finalAttrs: {
   version = "1.3.0";
 
   src = fetchFromGitHub {
-    owner = "BespokeSynth";
+    owner = "hcsch";
     repo = "bespokesynth";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-ad8wdLos3jM0gRMpcfRKeaiUxJsPGqWd/7XeDz87ToQ=";
+    rev = "8631ef6ecbc0fcb9b75afa9d0e290335c6c0e402";
+    hash = "sha256-ldkhw6lJUQaYuEVAYu/basYah0Hl/GN7KtDqqnW9R1k=";
     fetchSubmodules = true;
   };
 
@@ -68,6 +69,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   cmakeFlags = [
     (lib.cmakeBool "BESPOKE_SYSTEM_PYBIND11" true)
+    (lib.cmakeBool "BESPOKE_SYSTEM_JUCE" true)
     (lib.cmakeBool "BESPOKE_SYSTEM_JSONCPP" true)
   ]
   ++ lib.optionals enableVST2 [
@@ -85,6 +87,7 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs = [
+    juce
     jsoncpp
     # library & headers
     (python3.withPackages (
