@@ -2,6 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  fetchpatch,
 
   # Native build inputs
   autoPatchelfHook,
@@ -58,6 +59,10 @@ stdenv.mkDerivation (finalAttrs: {
     # for Juce 8.0.4.
     ./juce-8.0.4-cmake_install.patch
     ./cmake_extras_projucer_only.patch
+    (fetchpatch {
+      url = "https://github.com/hcsch/JUCE/commit/61a5745d891ef80c1f5f7ce81faee0685af7866e.patch";
+      hash = "sha256-0xQzY0dwXpgiSciw11inF7CL9S2YFT9QZwvu8KLTK8Q=";
+    })
   ];
 
   nativeBuildInputs = [
