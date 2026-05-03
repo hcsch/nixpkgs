@@ -122,6 +122,8 @@ stdenv.mkDerivation (finalAttrs: {
     mount
   ];
 
+  enableParallelBuilding = true;
+
   postInstall =
     if stdenv.hostPlatform.isDarwin then
       ''
