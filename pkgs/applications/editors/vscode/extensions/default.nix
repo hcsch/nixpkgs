@@ -1188,6 +1188,20 @@ let
         };
       };
 
+      dafny-lang.ide-vscode = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "ide-vscode";
+          publisher = "dafny-lang";
+          version = "3.5.4";
+          hash = "sha256-4SgWKpCkcLDgYFDzEkYzUcUEdW/8yKHL5y+h+wi6KQc=";
+        };
+        meta = {
+          description = "Dafny for Visual Studio Code";
+          homepage = "https://marketplace.visualstudio.com/items?itemName=dafny-lang.ide-vscode";
+          license = lib.licenses.mit;
+        };
+      };
+
       danielgavin.ols = buildVscodeMarketplaceExtension {
         mktplcRef = {
           publisher = "DanielGavin";
