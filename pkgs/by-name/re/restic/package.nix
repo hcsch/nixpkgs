@@ -26,9 +26,10 @@ buildGoModule (finalAttrs: {
   patches = [
     # The TestRestoreWithPermissionFailure test fails in Nix’s build sandbox
     ./0001-Skip-testing-restore-with-permission-failure.patch
+    ./0002-fusermount3.patch
   ];
 
-  vendorHash = "sha256-6r97M0XHuddbpSZ9yTtfIPUDkHkHP2PIDLWQTf/294E=";
+  vendorHash = "sha256-2YlLMzV2OJEwGxM8XgIRTWEf9Jf1BfNhMhxUq0MLFWU=";
 
   subPackages = [ "cmd/restic" ];
 
